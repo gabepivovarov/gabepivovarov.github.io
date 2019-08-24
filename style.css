@@ -1,0 +1,68 @@
+header {
+	padding-top: 60px;
+	color: #315110;
+	background: #8cabeb url(rip1.png);
+	background-position: left center;
+	background-repeat: no-repeat;
+}
+
+header h1 {
+	padding: 4px 32px 8px;
+	font: bold 250% Verdana, Geneva, sans-serif;
+}
+
+header p {
+	padding: 8px 32px 120px;
+	font: 125% Verdana, Geneva, sans-serif;
+}
+
+nav ul {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #486;
+	list-style-type: none;
+}
+
+nav li {
+	float: left;
+	font: 100% Arial, Helvetica, sans-serif;
+}
+
+nav a {
+	display: block;
+	padding: 14px 16px;
+	color: #ffffff;
+	text-decoration: none;
+}
+
+nav a:hover {
+	background-color: #243;
+}
+
+#currentpage {
+	background-color: #5a6;
+}
+
+
+main {
+	font-family: Arial,Helvetica,sans-serif;
+}
+
+div {
+	display: inline-block;
+	overflow: hidden;
+}
+
+#sidebar {
+	width:25%;float:right;background-color:#85e493;
+}
+
+section {
+	margin: 20px;
+}
+
+#sidebar button {
+	display: block;
+	margin: auto;
+}
