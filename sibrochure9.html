@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<meta charset=UTF-8>
+<title>SI Brochure (9th Edition) &ndash; Gabe Pivovarov</title>
+
+<script>
+const baseUnitNames = 'second metre kilogram ampere kelvin mole candela'.split(' ');
+const baseUnitSymbols = 's,m,kg,A,K,mol,cd'.split(',');
+
+const specialUnitNames = 'radian,steradian,hertz,newton,pascal,joule,watt,coulomb,volt,farad,ohm,siemens,weber,tesla,henry,degree Celsius,lumen,lux,becquerel,gray,sievert,katal'.split(',');
+const specialUnitSymbols = 'rad,sr,Hz,N,Pa,J,W,C,V,F,\u03A9,S,Wb,T,H,\u00B0C,lm,lx,Bq,Gy,Sv,kat'.split(',');
+
+const prefixNames = 'deca,hecto,kilo,mega,giga,tera,peta,exa,zetta,yotta,deci,centi,milli,micro,nano,pico,femto,atto,zepto,yocto'.split(',');
+const prefixSymbols = 'da,h,k,M,G,T,P,E,Z,Y,d,c,m,\u03BC,n,p,f,a,z,y'.split(',');
+
+const acceptedUnitNames = 'minute,hour,day,astronomical unit,degree,minute,second,hectare,litre,tonne,dalton,electronvolt,neper,bel,decibel'.split(',');
+const acceptedUnitSymbols = 'min,h,d,au,\u00B0,\u2032,\u2032\u2032,ha,L,t,Da,eV,Np,B,dB'.split(',');
+
+console.log(acceptedUnitSymbols)
+
+//function displayBaseUnit(i
+
+/*
+function checkInput(e) {
+	const inputValue = e.target.value;
+	if (baseUnitNames.includes(inputValue))
+		displayBaseUnit(baseUnitNames.indexOf(inputValue));
+	if (baseUnitSymbols.includes(inputValue))
+		displayBaseUnit(baseUnitSymbols.indexOf(inputValue));
+}
+*/
+
+/*
+function toggleInformation(b) {
+	const information = document.getElementsByClassName('information');
+	for (let i = 0; i < information.length; i++) {
+		information[i].toggleAttribute('hidden');
+	}
+}
+
+function toggleOtherQuizzes(n, b) {
+	const quiz = document.getElementsByClassName('quiz');
+	for (let i = 0; i < quiz.length; i++) {
+		if (i != n) quiz[i].toggleAttribute('hidden');
+	}
+}
+*/
+
+function toggleQuiz(n, starting = true) {
+	const quizInput = document.getElementById('quizInput');
+	const information = document.getElementsByClassName('information');
+	const quizzes = document.getElementsByClassName('quiz');
+	const questions = quizzes[n].children[1].children[1].children; // The tr elements in the tbody element in the table element in quiz n
+
+	// Toggle the visibility of the quiz input
+	quizInput.toggleAttribute('hidden');
+
+	// Toggle the visibility of all information sections
+	for (let i = 0; i < information.length; i++) {
+		information[i].toggleAttribute('hidden');
+	}
+
+	// Toggle the visibility of all quizzes except for the current quiz
+	for (let i = 0; i < quizzes.length; i++) {
+		if (i != n) quizzes[i].toggleAttribute('hidden');
+	}
+
+	// Hide all quiz questions if starting quiz; show all quiz questions if ending quiz
+	for (let i = 0; i < questions; i++) {
+		if (starting)
+			questions[i].setAttribute('hidden');
+		else
+			questions[i].removeAttribute('hidden');
+	}
+
+	// Update the behavior of the "End Quiz" button to end the current quiz
+	quizInput.children[1].setAttribute('onclick', 'endQuiz(' + n + ')');
+}
+
+function startQuiz(n) {
+	toggleQuiz(n);
+}
+
+function endQuiz(n) {
+	toggleQuiz(n, false);
+}
+</script>
+
+<h1>SI Brochure (9th Edition)</h1>
+
+<section id=quizInput><p><input oninput=checkInput(event)><button>End quiz</button></p></section>
+
+<section class=information><p><a href=https://www.bipm.org/utils/common/pdf/si-brochure/SI-Brochure-9-EN.pdf>Click here to view the 9th edition of the SI brochure as a PDF file.</a> The file used to make this page was retrieved Thu, 19 Dec 2019 02:46:11 GMT.</p></section>
+
+<section class=information>
+<h2>Definition of the SI</h2>
+<p>The International System of Units, the SI, is the system in which</p>
+<ul>
+<li>the unperturbed ground state hyperfine transition frequency of the caesium-133 atom, &Delta;<i>&nu;</i><sub>Cs</sub>, is 9192631770 Hz,
+<li>the speed of light in vacuum, <i>c</i>, is 299792458 m/s,
+<li>the Planck constant, <i>h</i>, is 6.62607015 &times; 10<sup>-34</sup> J s,
+<li>the elementary charge, <i>e</i>, is 1.602176634 &times; 10<sup>-19</sup> C,
+<li>the Boltzmann constant, <i>k</i>, is 1.380649 &times; 10<sup>-23</sup> J/K,
+<li>the Avogadro constant, <i>N</i><sub>A</sub>, is 6.02214076 &times; 10<sup>23</sup> mol<sup>-1</sup>,
+<li>the luminous efficacy of monochromatic radiation of frequency 540 &times; 10<sup>12</sup> Hz, <i>K</i><sub>cd</sub>, is 683 lm/W,
+</ul>
+<p>where the hertz, joule coulomb, lumen, and watt, with unit symbols Hz, J, C, lm, and W, respectively, are related to the units second, metre, kilogram, ampere, kelvin, mole, and candela, with unit symbols s, m, kg, A, K, mol, and cd, respectively, according to Hz = s<sup>-1</sup>, J = kg m<sup>2</sup> s<sup>-2</sup>, C = A s, lm = cd m<sup>2</sup> m<sup>-2</sup> = cd sr, and W = kg m<sup>2</sup> s<sup>-3</sup>.
+</section>
+
+<section class=quiz>
+<h3>Table 1. The seven defining constants of the SI and the seven corresponding units they define</h3>
+<table>
+<thead><tr><th>Defining constant<th>Symbol<th>Numerical value<th>Unit
+<tbody>
+<tr><td>hyperfine transition frequency of Cs<td>&Delta;<i>&nu;</i><sub>Cs</sub><td>9192631770<td>Hz
+<tr><td>speed of light in vacuum<td><i>c</i><td>299792458<td>m/s
+<tr><td>Planck constant<td><i>h</i><td>6.62607015 &times; 10<sup>-34</sup><td>J s
+<tr><td>elementary charge<td><i>e</i><td>1.602176634 &times; 10<sup>-19</sup><td>C
+<tr><td>Boltzmann constant<td><i>k</i><td>1.380649 &times; 10<sup>-23</sup><td>J/K
+<tr><td>Avogadro constant<td><i>N</i><sub>A</sub><td>6.02214076 &times; 10<sup>23</sup><td>mol<sup>-1</sup>
+<tr><td>luminous efficacy<td><i>K</i><sub>cd</sub><td>683<td>lm/W
+</table>
+<h3>Table 1 quiz</h3>
+<p>Type the value of each of the seven defining constants in scientific notation. Use <code>*</code> for multiplication, use <code>^</code> for exponentation, and use a space to separate the numerical value from the unit. For example, type <code>5.4*10^14 Hz</code> to represent the quantity 5.4 &times; 10<sup>14</sup> Hz.
+<p><button onclick=startQuiz(0)>Start quiz</button></p>
+</section>
